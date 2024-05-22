@@ -47,7 +47,7 @@ function App() {
         />
       </form>
 
-      <a href="https://github.com/maxencelav/doodles/carte-inte-22.05.2024" target="_blank">
+      <a href="https://github.com/maxencelav/doodles/blob/main/carte-inte-22.05.2024/" target="_blank">
         Voir le code source
       </a>
     </>
