@@ -1,0 +1,131 @@
+#root {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  --border-width: 2px;
+  --border-radius: 0.5rem;
+}
+
+
+
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr 50px;
+  grid-template-rows: 1fr auto;
+  border: var(--border-width) solid black;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: 3px 5px 0 0px black;
+  color: black;
+  text-align: start;
+  overflow: hidden;
+
+  max-width: 300px;
+  max-height: 400px;
+}
+
+/* TOP OF THE CARD */
+.card-wrapper .card-top {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+}
+
+.card-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+.card-wrapper .empty {
+  border-left: var(--border-width) solid black;
+}
+
+/* BOTTOM OF THE CARD */
+.card-wrapper .card-bottom {
+  position: relative;
+}
+
+.card-wrapper h1 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  border-top: var(--border-width) solid black;
+  background-color: white;
+  position: relative;
+}
+
+.card-wrapper p {
+  /* BASIC STYLING */
+  --height: 40px;
+
+  display: flex;
+  place-items: center;
+
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+
+  height: calc(var(--height) - var(--border-width));
+
+  font-size: 1rem;
+  border-top: var(--border-width) solid black;
+  border-bottom: var(--border-width) solid white;
+
+  background-color: white;
+  z-index: 2;
+  max-width: calc(100% - 40px); /* 40px is the width of the slanted part */
+
+  /* MAKING IT DISPLAY ABOVE THE TOP PART OF THE CARD */
+  position: absolute;
+  top: calc(-1 * var(--height) - calc(var(--border-width) * -2));
+  /* top position is the full height of the element minus the border 2x so that it hides the top border of the h1 */
+  right: -10px;
+  /* magic number to hide the emmpty space due to the skew */
+
+  /* MAKING IT SLANTED */
+  transform: skewX(25deg);
+  padding-right: calc(0.5em + 10px); /* 0.5em + 10px is the width of the slanted part */;
+
+}
+
+ .card-wrapper p:before {
+  z-index: 3;
+
+  height: calc(var(--height) - calc(2 * var(--border-width)));
+  width: 40px;
+  
+  background: white;
+  border: var(--border-width) solid black;
+  border-right: 0;
+  border-bottom: var(--border-width) solid white;
+
+  content: '';
+  position: absolute;
+  right: calc(100% - 20px); /* 100% is the width of the element, 20px is the width of both slanted parts */
+  bottom: calc(-2 * var(--border-width)); /* -1 * border-width to hide the bottom border of the p element */
+
+  transform: skewX(140deg);
+  border-right: 0;
+  margin: 0;
+  margin-bottom: 0px;
+  padding: 0;
+  border-radius: var(--border-radius) 0 0 0;
+}
+
+.card-wrapper p span {
+  z-index: 3;
+  transform: skewX(-25deg);
+
+  position: relative;
+  right: 7px;
+  bottom: 2px;
+}
